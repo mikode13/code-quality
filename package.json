@@ -1,0 +1,39 @@
+{
+	"name": "@mikode13/code-quality",
+	"version": "0.1.0",
+	"description": "Shared ESLint code-quality configuration for MiKode projects.",
+	"type": "module",
+	"packageManager": "pnpm@11.17.0",
+	"engines": {
+		"node": "^22.13.0 || ^24.0.0"
+	},
+	"exports": {
+		"./base": "./src/base.js",
+		"./react": "./src/react.js"
+	},
+	"files": [
+		"src"
+	],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/mikode13/code-quality.git"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"license": "SEE LICENSE IN LICENSE",
+	"scripts": {
+		"preinstall": "npx only-allow pnpm",
+		"format": "prettier . --write",
+		"format:check": "prettier . --check",
+		"lint": "eslint .",
+		"lint:fix": "eslint . --fix",
+		"typecheck": "node --check eslint.config.js && node --check src/base.js && node --check src/react.js",
+		"test": "echo \"no tests yet\" && exit 0"
+	},
+	"devDependencies": {
+		"@eslint/js": "^10.0.0",
+		"eslint": "^10.0.0",
+		"prettier": "^3.5.0"
+	}
+}
