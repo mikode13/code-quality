@@ -23,14 +23,14 @@
 	},
 	"license": "SEE LICENSE IN LICENSE",
 	"scripts": {
-		"preinstall": "npx only-allow pnpm",
+		"prepare": "node scripts/verify-pnpm.mjs",
 		"check": "pnpm run format:check && pnpm run lint && pnpm run typecheck && pnpm run test && pnpm run audit:prod && pnpm run pack:check",
 		"audit:prod": "pnpm audit --prod",
 		"format": "prettier . --write",
 		"format:check": "prettier . --check",
 		"lint": "eslint . --max-warnings 0",
 		"lint:fix": "eslint . --fix",
-		"typecheck": "node --check eslint.config.js && node --check prettier.config.mjs && node --check src/base.js && node --check src/react.js && node --check test/configs.test.js",
+		"typecheck": "node --check eslint.config.js && node --check prettier.config.mjs && node --check scripts/verify-pnpm.mjs && node --check src/base.js && node --check src/react.js && node --check test/configs.test.js",
 		"test": "node --test test/configs.test.js",
 		"pack:check": "pnpm pack --dry-run"
 	},
